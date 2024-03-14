@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Logs</h1>
+        <form action="/login">
+            <label for="name">Welcome</label><br>
+            <input type="text" id="user" name="user" placeholder="User"><br><br>
+            <input type="password" id="pswd" name="pswd" placeholder="Password"><br><br>
+            <input type="button" value="Submit" onclick="loadGetMsg()">
+        </form>
+        
+        <div id="getrespmsg"></div>
+
+        <script>
+            function loadGetMsg() {
+                let user = document.getElementById("user").value;
+                let pswd = document.getElementById("pswd").value;
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function() {
+                    document.getElementById("getrespmsg").innerHTML =
+                    this.responseText;
+                }
+                xhttp.open("GET", "/login?user="+user+"&pswd="+pswd);
+                xhttp.send();
+            }
+        </script>
+
+    </body>
+</html>
