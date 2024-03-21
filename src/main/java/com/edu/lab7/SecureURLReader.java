@@ -48,7 +48,8 @@ public class SecureURLReader {
             SSLContext.setDefault(sslContext);
 
             // We can now read this URL
-            return readURL("https://localhost:5000/hello?user=" + user + "&pswd=" + pswd);
+            return readURL(
+                    "https://ec2-54-147-244-181.compute-1.amazonaws.com:5000/hello?user=" + user + "&pswd=" + pswd);
 
         } catch (KeyStoreException ex) {
             Logger.getLogger(SecureURLReader.class.getName()).log(Level.SEVERE, null, ex);
