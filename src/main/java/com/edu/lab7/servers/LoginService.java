@@ -13,7 +13,7 @@ public class LoginService {
 
         staticFiles.location("/public");
 
-        secure("certificados/ecikeystore.p12", "123456", null, null);
+        secure("certificados/loginecikeystore.p12", "123456", null, null);
 
         get("/login", (req, res) -> {
             String user = req.queryParams("user");
