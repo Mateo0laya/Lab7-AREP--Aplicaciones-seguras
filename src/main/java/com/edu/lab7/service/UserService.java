@@ -3,7 +3,7 @@ package com.edu.lab7.service;
 import java.util.Hashtable;
 
 public class UserService {
-    
+
     private static Hashtable<String, String> users;
 
     public static void exec() {
@@ -19,7 +19,10 @@ public class UserService {
 
     public static boolean validateUser(String usr, String pswd) {
         String cryptedPswd = org.apache.commons.codec.digest.DigestUtils.sha256Hex(pswd);
-        return (users.get(usr).equals(cryptedPswd))?true:false;
+        if (users.containsKey(usr)) {
+            return (users.get(usr).equals(cryptedPswd)) ? true : false;
+        }
+        return false;
     }
 
 }

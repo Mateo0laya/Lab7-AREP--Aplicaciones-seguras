@@ -18,7 +18,7 @@ import javax.net.ssl.TrustManagerFactory;
 
 public class SecureURLReader {
 
-    public static String invoke() {
+    public static String invoke(String user, String pswd) {
         try {
 
             // Create a file and a password representation
@@ -32,24 +32,24 @@ public class SecureURLReader {
             // Get the singleton instance of the TrustManagerFactory
             TrustManagerFactory tmf = TrustManagerFactory
                     .getInstance(TrustManagerFactory.getDefaultAlgorithm());
-            
+
             // Itit the TrustManagerFactory using the truststore object
             tmf.init(trustStore);
-            
-            //Print the trustManagers returned by the TMF
-            //only for debugging
-            for(TrustManager t: tmf.getTrustManagers()){
+
+            // Print the trustManagers returned by the TMF
+            // only for debugging
+            for (TrustManager t : tmf.getTrustManagers()) {
                 System.out.println(t);
             }
-            
-            //Set the default global SSLContext so all the connections will use it
+
+            // Set the default global SSLContext so all the connections will use it
             SSLContext sslContext = SSLContext.getInstance("TLS");
             sslContext.init(null, tmf.getTrustManagers(), null);
             SSLContext.setDefault(sslContext);
 
             // We can now read this URL
-            return readURL("https://localhost:5000/hello");
-        
+            return readURL("https://localhost:5000/hello?user=" + user + "&pswd=" + pswd);
+
         } catch (KeyStoreException ex) {
             Logger.getLogger(SecureURLReader.class.getName()).log(Level.SEVERE, null, ex);
         } catch (FileNotFoundException ex) {
@@ -82,7 +82,7 @@ public class SecureURLReader {
             for (Map.Entry<String, List<String>> entry : entrySet) {
                 String headerName = entry.getKey();
 
-                //Si el nombre es nulo, significa que es la linea de estado
+                // Si el nombre es nulo, significa que es la linea de estado
                 if (headerName != null) {
                     System.out.print(headerName + ":");
                 }

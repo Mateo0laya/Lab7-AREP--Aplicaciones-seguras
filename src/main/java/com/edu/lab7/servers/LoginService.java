@@ -6,11 +6,11 @@ import com.edu.lab7.SecureURLReader;
 import com.edu.lab7.service.UserService;
 
 public class LoginService {
-    
+
     public static void main(String[] args) {
 
         UserService.exec();
-        
+
         staticFiles.location("/public");
 
         secure("certificados/ecikeystore.p12", "123456", null, null);
@@ -19,7 +19,7 @@ public class LoginService {
             String user = req.queryParams("user");
             String pswd = req.queryParams("pswd");
             boolean access = UserService.validateUser(user, pswd);
-            return (access)?SecureURLReader.invoke():"Acceso denegado";
+            return (access) ? SecureURLReader.invoke("root", "12345") : "Acceso denegado";
         });
 
     }
