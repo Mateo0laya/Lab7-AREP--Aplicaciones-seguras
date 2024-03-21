@@ -104,7 +104,7 @@ A continuación encuentra un video donde se detalla las pruebas de la aplicació
 
 Para probar la aplicación lo podemos realizar con ejecución en local, o desde una instancia EC-2 de AWS, en este caso optaré por la segunda opción. Una vez con la aplicación corriendo podemos empezar con las pruebas
 
-Desde el navegador accederemos a la dirección DNS proporcionada por AWS para nuestra instancia EC-2, es importante recordar que la aplicación corre sobre el puerto 4567. Del mismo modo debemos acceder usando el protocolo http, en mi caso la dirección es la siguiente, pero en su caso debe variar: https://https://ec2-54-210-145-243.compute-1.amazonaws.com:4567/
+Desde el navegador accederemos a la dirección DNS proporcionada por AWS para nuestra instancia EC-2, es importante recordar que la aplicación corre sobre el puerto 4567. Del mismo modo debemos acceder usando el protocolo https, en mi caso la dirección es la siguiente, pero en su caso debe variar: https://https://ec2-54-210-145-243.compute-1.amazonaws.com:4567/
 
 ![image](https://github.com/Mateo0laya/Lab7-AREP--Aplicaciones-seguras/assets/89365336/8b69b4af-e2ee-4c9d-80cd-e7a626441dec)
 
